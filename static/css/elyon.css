@@ -1,0 +1,436 @@
+:root {
+    --elyon-primary: #E8231A;
+    --elyon-primary-deep: #B81810;
+    --elyon-secondary: #1a1a1a;
+    --elyon-dark: #141414;
+    --elyon-cream: #f2ede4;
+    --elyon-line: #DCD5C6;
+    --elyon-ink-soft: #6B675F;
+}
+
+body {
+    background-color: var(--elyon-cream);
+    color: #1a1a1a;
+    font-family: 'Inter', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.mono {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+}
+
+/* ===== Typographie — Anton réservé au strict essentiel ===== */
+.elyon-app .hero-elyon h1,
+.elyon-app .score-ring-inner,
+.elyon-app .navbar-brand {
+    font-family: 'Anton', 'Helvetica Neue', Arial, sans-serif;
+    letter-spacing: 0.01em;
+    font-weight: 400; /* Anton n'a qu'une seule graisse — le forcer en gras crée un faux gras flou */
+}
+
+/* Les autres titres restent en Inter, mais avec un traitement disicpliné (capitales + tracking) */
+.elyon-app h2, .elyon-app h3, .elyon-app h4, .elyon-app h5, .elyon-app h6 {
+    font-weight: 700;
+    letter-spacing: 0.01em;
+}
+
+.elyon-app a {
+    color: var(--elyon-primary);
+}
+.elyon-app a:hover {
+    color: var(--elyon-primary-deep);
+}
+
+.elyon-app .btn-link {
+    --bs-btn-color: var(--elyon-primary);
+    --bs-btn-hover-color: var(--elyon-primary-deep);
+    --bs-btn-active-color: var(--elyon-primary-deep);
+    text-decoration: none;
+}
+.elyon-app .btn-link:hover {
+    text-decoration: underline;
+}
+
+/* Focus clavier visible partout dans l'app (accessibilité) */
+.elyon-app a:focus-visible,
+.elyon-app button:focus-visible,
+.elyon-app .form-control:focus-visible {
+    outline: 2px solid var(--elyon-primary);
+    outline-offset: 2px;
+}
+
+/* ===== Formulaires ===== */
+.elyon-app .form-label {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: var(--elyon-ink-soft);
+    margin-bottom: 0.4rem;
+}
+.elyon-app .form-control,
+.elyon-app .form-select {
+    border-color: var(--elyon-line);
+    border-radius: 4px;
+    padding: 0.6rem 0.85rem;
+}
+.elyon-app .form-control:focus,
+.elyon-app .form-select:focus {
+    border-color: var(--elyon-primary);
+    box-shadow: 0 0 0 0.2rem rgba(232, 35, 26, 0.15);
+}
+.elyon-app .form-check-input:checked {
+    background-color: var(--elyon-primary);
+    border-color: var(--elyon-primary);
+}
+.elyon-app .form-check-input:focus {
+    border-color: var(--elyon-primary);
+    box-shadow: 0 0 0 0.2rem rgba(232, 35, 26, 0.15);
+}
+
+/* ===== Navbar ===== */
+.navbar-elyon {
+    background: var(--elyon-cream);
+    border-bottom: 1px solid var(--elyon-line);
+    padding: 1.2rem 0;
+}
+.navbar-elyon .navbar-brand,
+.navbar-elyon .nav-link {
+    color: #1a1a1a !important;
+    text-transform: uppercase;
+    font-size: 0.78rem;
+    letter-spacing: 0.07em;
+    font-weight: 600;
+}
+.navbar-elyon .navbar-brand {
+    font-size: 1.25rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+}
+.navbar-elyon .nav-link {
+    color: var(--elyon-ink-soft) !important;
+}
+.navbar-elyon .nav-link:hover {
+    color: #1a1a1a !important;
+}
+.brand-dot {
+    display: inline-block;
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--elyon-primary);
+    margin-left: 4px;
+    vertical-align: middle;
+}
+
+/* ===== Boutons ===== */
+.btn-elyon-primary {
+    background: var(--elyon-secondary);
+    border-color: var(--elyon-secondary);
+    color: #fff;
+    border-radius: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    padding: 0.65rem 1.4rem;
+    transition: background 0.15s ease, border-color 0.15s ease, transform 0.15s ease;
+}
+.btn-elyon-primary:hover {
+    background: var(--elyon-primary);
+    border-color: var(--elyon-primary);
+    color: #fff;
+    transform: translateY(-1px);
+}
+
+.btn-outline-primary {
+    --bs-btn-color: var(--elyon-primary);
+    --bs-btn-border-color: var(--elyon-primary);
+    --bs-btn-hover-bg: var(--elyon-primary);
+    --bs-btn-hover-border-color: var(--elyon-primary);
+    --bs-btn-hover-color: #fff;
+    --bs-btn-active-bg: var(--elyon-primary);
+    --bs-btn-active-border-color: var(--elyon-primary);
+    --bs-btn-active-color: #fff;
+}
+
+/* ===== Cartes ===== */
+.card-elyon {
+    border: 1px solid var(--elyon-line);
+    border-radius: 6px;
+    box-shadow: none;
+    background: #fff;
+    transition: border-color 0.15s ease, transform 0.15s ease;
+}
+.card-elyon.card-hover:hover,
+a.card-elyon:hover {
+    border-color: var(--elyon-secondary);
+    transform: translateY(-2px);
+}
+
+.card-label {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.68rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--elyon-ink-soft);
+    margin-bottom: 0.6rem;
+    display: block;
+}
+
+.card-elyon.card-accent {
+    background: var(--elyon-dark);
+    border-color: var(--elyon-dark);
+    color: var(--elyon-cream);
+}
+.card-elyon.card-accent .card-label {
+    color: #a8a49a;
+}
+.card-elyon.card-accent .text-muted,
+.card-elyon.card-accent p {
+    color: #c9c5bb !important;
+}
+
+/* ===== Hero (landing page app) ===== */
+.hero-elyon {
+    position: relative;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    background: #fff;
+    color: #1a1a1a;
+    border-radius: 6px;
+    border: 1px solid var(--elyon-line);
+    overflow: hidden;
+    text-align: left;
+    padding: 0;
+}
+.hero-elyon-band {
+    background: var(--elyon-primary);
+    position: relative;
+}
+.hero-elyon-band span {
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%) rotate(-90deg);
+    white-space: nowrap;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.3em;
+    color: #ffe9e7;
+    text-transform: uppercase;
+}
+.hero-elyon-main {
+    padding: 3.2rem 2.4rem;
+}
+.hero-elyon .eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.75rem;
+    font-weight: 500;
+    letter-spacing: 0.05em;
+    color: var(--elyon-primary-deep);
+    margin-bottom: 1.1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+.hero-elyon .eyebrow::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--elyon-primary);
+    border-radius: 50%;
+    display: inline-block;
+}
+.hero-elyon h1 {
+    text-transform: uppercase;
+    line-height: 1;
+    max-width: 15ch;
+    margin-bottom: 1.3rem;
+}
+.hero-elyon .lead {
+    max-width: 46ch;
+    color: var(--elyon-ink-soft) !important;
+}
+.hero-elyon-meta {
+    display: flex;
+    gap: 2.4rem;
+    margin-top: 2.6rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid var(--elyon-line);
+    max-width: 46ch;
+    flex-wrap: wrap;
+}
+.hero-elyon-meta div span {
+    display: block;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 1.3rem;
+    font-weight: 600;
+}
+.hero-elyon-meta div small {
+    display: block;
+    font-size: 0.66rem;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--elyon-ink-soft);
+    margin-top: 0.25rem;
+}
+@media (max-width: 768px) {
+    .hero-elyon { grid-template-columns: 32px 1fr; }
+    .hero-elyon-main { padding: 2rem 1.4rem; }
+    .hero-elyon-band span { font-size: 0.55rem; letter-spacing: 0.18em; }
+}
+
+.score-ring {
+    width: 96px;
+    height: 96px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.4rem;
+    color: #fff;
+    background: conic-gradient(var(--elyon-primary) calc(var(--score) * 1%), #3a3a3a 0);
+}
+.score-ring-inner {
+    width: 76px;
+    height: 76px;
+    border-radius: 50%;
+    background: var(--elyon-dark);
+    color: #ffffff;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.footer-elyon {
+    background: var(--elyon-dark);
+    color: #cfcfcf;
+    border-top: none;
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 0.78rem;
+    letter-spacing: 0.02em;
+}
+.footer-elyon a { color: var(--elyon-primary); }
+
+.badge-tech {
+    background: var(--elyon-cream);
+    color: #1a1a1a;
+    border: 1px solid var(--elyon-line);
+    border-radius: 3px;
+    padding: 0.3rem 0.7rem;
+    font-size: 0.78rem;
+    margin: 0 4px 4px 0;
+    display: inline-block;
+}
+
+/* Section eyebrow générique (label mono au-dessus d'un titre) */
+.section-eyebrow {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    color: var(--elyon-primary-deep);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 600;
+    font-size: 0.8rem;
+}
+
+/* Public profile themes */
+.theme-minimal { background: #fff; }
+.theme-dark { background: #14141f; color: #eaeaf5; }
+.theme-dark .card-elyon { background: #1e1e2f; color: #eaeaf5; }
+.theme-developer { background: #0d1117; color: #c9d1d9; font-family: 'Courier New', monospace; }
+.theme-developer .card-elyon { background: #161b22; color: #c9d1d9; border: 1px solid #30363d; }
+.theme-glass .card-elyon { background: rgba(255,255,255,0.55); backdrop-filter: blur(12px); }
+.theme-creative { background: linear-gradient(135deg,#ffecd2,#fcb69f); }
+.theme-corporate { background: #f4f6fb; }
+
+.public-avatar {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #fff;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}
+
+.ai-panel textarea {
+    min-height: 90px;
+}
+
+.preview-banner {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    background: #1e1e2f;
+    color: #fff;
+    text-align: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.85rem;
+}
+.preview-banner a {
+    color: #00CEC9;
+    margin-left: 10px;
+    font-weight: 600;
+}
+
+/* Theme catalog cards */
+.theme-catalog-card {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 2px solid transparent;
+    transition: transform 0.15s ease, border-color 0.15s ease;
+    cursor: pointer;
+    background: #fff;
+}
+.theme-catalog-card:hover {
+    transform: translateY(-3px);
+}
+.theme-catalog-card.selected {
+    border-color: var(--elyon-primary);
+}
+.theme-thumb-img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+    display: block;
+}
+
+/* Corporate theme layout */
+.theme-corporate .corp-sidebar {
+    background: #1e2740;
+    color: #eef0ff;
+    border-radius: 16px;
+}
+.theme-corporate .corp-sidebar a { color: #9fb3ff; }
+
+/* Creative theme */
+.theme-creative .card-elyon { border-radius: 22px; }
+
+/* Glass theme background */
+.theme-glass {
+    background: linear-gradient(135deg, #6C5CE7, #00CEC9);
+    min-height: 100vh;
+}
+.theme-glass .card-elyon {
+    background: rgba(255,255,255,0.5);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255,255,255,0.4);
+}
+
+/* Developer theme extras */
+.theme-developer .terminal-bar {
+    background: #21262d;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 12px;
+    display: flex;
+    gap: 6px;
+}
+.theme-developer .terminal-dot {
+    width: 10px; height: 10px; border-radius: 50%;
+}
+.theme-developer pre {
+    white-space: pre-wrap;
+    color: #7ee787;
+}

@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Formations — ELYON{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card-elyon p-4 mb-4">
+            <span class="card-label">Formations</span>
+            <h4 class="mb-3">Ajouter une formation</h4>
+            <form method="post" novalidate>
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="mb-2">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                {% endfor %}
+                <button class="btn btn-elyon-primary" type="submit">Ajouter</button>
+            </form>
+        </div>
+        <div class="card-elyon p-4">
+            <h5 class="mb-3">Mes formations</h5>
+            <ul class="list-group list-group-flush">
+                {% for edu in educations %}
+                <li class="list-group-item d-flex justify-content-between align-items-start">
+                    <div>
+                        <strong>{{ edu.degree }}</strong> — {{ edu.school }}<br>
+                        <span class="small text-muted mono">{{ edu.start_date }} — {{ edu.end_date|default:"en cours" }}</span>
+                    </div>
+                    <a href="{% url 'profiles:delete_education' edu.pk %}" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-muted">Aucune formation pour le moment.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{% url 'profiles:dashboard' %}" class="btn btn-link mt-3">&larr; Retour au dashboard</a>
+    </div>
+</div>
+{% endblock %}

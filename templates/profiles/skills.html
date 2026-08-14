@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% block title %}Compétences — ELYON{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-7">
+        <div class="card-elyon p-4 mb-4">
+            <span class="card-label">Compétences</span>
+            <h4 class="mb-3">Ajouter une compétence</h4>
+            <form method="post" class="row g-2" novalidate>
+                {% csrf_token %}
+                <div class="col-7">{{ form.name }}</div>
+                <div class="col-3">{{ form.level }}</div>
+                <div class="col-2"><button class="btn btn-elyon-primary w-100" type="submit">Ajouter</button></div>
+            </form>
+            <button type="button" id="ai-suggest-btn" class="btn btn-sm btn-outline-primary mt-3">
+                <i class="bi bi-stars"></i> Suggestions IA
+            </button>
+            <div id="ai-suggestions" class="mt-2 small"></div>
+        </div>
+        <div class="card-elyon p-4">
+            <h5 class="mb-3">Mes compétences</h5>
+            <ul class="list-group list-group-flush">
+                {% for skill in skills %}
+                <li class="list-group-item d-flex justify-content-between align-items-center">
+                    <span>{{ skill.name }} — Niveau {{ skill.level }}/5</span>
+                    <a href="{% url 'profiles:delete_skill' skill.pk %}" class="btn btn-sm btn-outline-danger">Supprimer</a>
+                </li>
+                {% empty %}
+                <li class="list-group-item text-muted">Aucune compétence pour le moment.</li>
+                {% endfor %}
+            </ul>
+        </div>
+        <a href="{% url 'profiles:dashboard' %}" class="btn btn-link mt-3">&larr; Retour au dashboard</a>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_scripts %}
+<script>
+function getCookie(name) {
+    const v = document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)');
+    return v ? v.pop() : '';
+}
+document.getElementById('ai-suggest-btn').addEventListener('click', async () => {
+    const out = document.getElementById('ai-suggestions');
+    out.innerHTML = 'Chargement…';
+    const res = await fetch("{% url 'ai:skill_suggestions' %}", {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json', 'X-CSRFToken': getCookie('csrftoken')},
+        body: JSON.stringify({})
+    });
+    const data = await res.json();
+    if (data.ok) {
+        out.innerHTML = data.result.map(s => `<span class="badge-tech">${s}</span>`).join(' ');
+    } else {
+        out.innerHTML = `<span class="text-danger">${data.error}</span>`;
+    }
+});
+</script>
+{% endblock %}

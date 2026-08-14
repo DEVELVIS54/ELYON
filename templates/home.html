@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% block title %}ELYON — Ton CV professionnel, généré par l'IA{% endblock %}
+
+{% block content %}
+<div class="hero-elyon mb-5">
+    <div class="hero-elyon-band"><span>CV — IA — THÈMES — PDF</span></div>
+    <div class="hero-elyon-main">
+        <div class="eyebrow">Généré par IA · Prêt en quelques minutes</div>
+        <h1 class="display-5">Ton CV professionnel, généré par l'IA</h1>
+        <p class="lead">Renseigne tes informations, choisis un thème. ELYON génère un CV soigné et professionnel, prêt à envoyer.</p>
+        <a href="{% url 'accounts:register' %}" class="btn btn-elyon-primary btn-lg">Créer mon CV gratuitement</a>
+
+        <div class="hero-elyon-meta">
+            <div><span class="mono">IA</span><small>Rédaction &amp; mise en page</small></div>
+            <div><span class="mono">3 min</span><small>Temps de création moyen</small></div>
+            <div><span class="mono">0€</span><small>Gratuit, sans carte</small></div>
+        </div>
+    </div>
+</div>
+
+<div class="text-center mb-4">
+    <span class="section-eyebrow">Ce que propose ELYON</span>
+    <h2 class="text-uppercase mt-1">Un CV professionnel, sans effort</h2>
+</div>
+
+<div class="row g-4 mb-5">
+    <div class="col-md-4">
+        <div class="card-elyon p-4 h-100">
+            <i class="bi bi-person-badge fs-2 mb-2" style="color:var(--elyon-primary)"></i>
+            <span class="card-label">Profil</span>
+            <h5 class="text-uppercase">Ton profil</h5>
+            <p class="mb-0" style="color:var(--elyon-ink-soft);">Renseigne tes compétences, expériences et formations une seule fois.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-elyon p-4 h-100">
+            <i class="bi bi-stars fs-2 mb-2" style="color:var(--elyon-primary)"></i>
+            <span class="card-label">Assistant</span>
+            <h5 class="text-uppercase">Assistant IA</h5>
+            <p class="mb-0" style="color:var(--elyon-ink-soft);">Génère ta bio, reçois des suggestions de compétences et des conseils pour optimiser ton profil.</p>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card-elyon p-4 h-100">
+            <i class="bi bi-file-earmark-pdf fs-2 mb-2" style="color:var(--elyon-primary)"></i>
+            <span class="card-label">Export</span>
+            <h5 class="text-uppercase">CV en PDF</h5>
+            <p class="mb-0" style="color:var(--elyon-ink-soft);">Un CV PDF généré automatiquement à partir de tes informations, prêt à télécharger.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card-elyon card-accent p-5 text-center">
+    <h3 class="text-uppercase mb-2">Prêt à générer ton CV ?</h3>
+    <p class="mb-4">Gratuit, sans carte bancaire, en ligne en quelques minutes.</p>
+    <a href="{% url 'accounts:register' %}" class="btn btn-elyon-primary">Commencer maintenant</a>
+</div>
+{% endblock %}
